@@ -1,8 +1,13 @@
-import { TextConfig } from 'konva/lib/shapes/Text';
-
 export interface INote {
   id: string;
+  style: INoteStyle;
   position: { x: number; y: number };
+}
+
+export interface INoteStyle {
+  background: string;
+  boder: string;
+  color: string;
 }
 
 type ContentType = 'text' | 'link';

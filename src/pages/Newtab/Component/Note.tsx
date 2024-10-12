@@ -20,7 +20,9 @@ const Note: React.FC<TestNoteProps> = ({ startDraggingHandle, note }) => {
         left: 0,
         width: 100,
         minHeight: 100,
-        background: 'blue',
+        color: note.style.color,
+        background: note.style.background,
+        border: note.style.boder,
         transform: `translate(${note.position.x}px, ${note.position.y}px)`,
       }}
       ref={divRef}

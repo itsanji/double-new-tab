@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { INote } from '../../types/types';
-import { constants } from '../utils/utils';
+import { constants, defaultNote } from '../utils/utils';
 
 export const useNote = () => {
   const [notes, updateNotesState] = useState<INote[]>(function () {
@@ -8,29 +8,8 @@ export const useNote = () => {
     const xnotes = window.localStorage.getItem(constants.NOTES_KEY);
     if (!xnotes) {
       // return empty notes and save empty notes to localStorage
-      window.localStorage.setItem(
-        constants.NOTES_KEY,
-        JSON.stringify([
-          {
-            id: '1',
-            position: { x: 10, y: 30 },
-          },
-          {
-            id: '2',
-            position: { x: 50, y: 150 },
-          },
-        ])
-      );
-      return [
-        {
-          id: '1',
-          position: { x: 10, y: 30 },
-        },
-        {
-          id: '2',
-          position: { x: 50, y: 150 },
-        },
-      ];
+      window.localStorage.setItem(constants.NOTES_KEY, JSON.stringify([defaultNote, defaultNote] as INote[]));
+      return [defaultNote, { ...defaultNote, id: '2' }];
     }
 
     try {

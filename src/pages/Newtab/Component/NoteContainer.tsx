@@ -1,24 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Note from './Note';
 import { INote } from '../../types/types';
 import { useNote } from '../hooks/noteHooks';
 
-interface TestProps {
+interface ContainerProps {
   children?: React.ReactNode;
 }
 
-const NoteContainer: React.FC<TestProps> = () => {
+const NoteContainer: React.FC<ContainerProps> = () => {
   const [draggingItem, setDraggingDiv] = useState<HTMLDivElement | null>(null);
   const [draggingNote, setDraggingNote] = useState<INote | null>(null);
-  // const [notes, setNotes] = useState<xNote[]>();
   const { notes, setNotes } = useNote();
   const position = useRef({ x: 0, y: 0 });
   const startPosition = useRef({ x: 0, y: 0 });
   const newPosition = useRef({ x: 0, y: 0 });
-
-  useEffect(() => {
-    console.log({ notes });
-  }, [notes]);
 
   const startDragHandle = (id: string, e: React.MouseEvent<HTMLDivElement>, div: HTMLDivElement | null) => {
     startPosition.current = { x: e.clientX, y: e.clientY };
