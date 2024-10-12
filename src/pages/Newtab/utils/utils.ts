@@ -10,8 +10,10 @@ const defaultNote: INote = {
     boder: '1px solid grey',
     background: '#036016',
     color: 'white',
+    width: 300,
   },
   position: { x: 10, y: 30 },
+  content: '# hello?\n- does [Link](https://google.com) works?\n- why not working?\n',
 };
 
 export { constants, defaultNote };
