@@ -16,6 +16,7 @@ const NoteContainer: React.FC<ContainerProps> = () => {
   const newPosition = useRef({ x: 0, y: 0 });
 
   const startDragHandle = (id: string, e: React.MouseEvent<HTMLDivElement>, div: HTMLDivElement | null) => {
+    e.preventDefault();
     startPosition.current = { x: e.clientX, y: e.clientY };
     const dragNote = notes.find((note) => note.id === id);
     if (!dragNote) {
@@ -61,7 +62,7 @@ const NoteContainer: React.FC<ContainerProps> = () => {
       onMouseMove={draggingHandle}
     >
       {notes.map((note) => (
-        <Note key={note.id} startDraggingHandle={startDragHandle} note={note} />
+        <Note key={note.id} isDragging={draggingNote?.id === note.id} startDraggingHandle={startDragHandle} note={note} />
       ))}
     </div>
   );
