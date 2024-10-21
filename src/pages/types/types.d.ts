@@ -1,23 +1,13 @@
-import { TextConfig } from 'konva/lib/shapes/Text';
+export interface INote {
+  id: string;
+  style: INoteStyle;
+  position: { x: number; y: number };
+  content: string;
+}
 
-export interface ShapeAttr {
-  x: number;
-  y: number;
+export interface INoteStyle {
   width: number;
-  height: number;
-  fill: string;
-  id: string;
-}
-
-export interface Note {
-  id: string;
-  shapeAttr: ShapeAttr;
-  content: NoteContent[];
-}
-
-type ContentType = 'text' | 'link';
-
-export interface NoteContent extends TextConfig {
-  id: string;
-  type: ContentType;
+  background: string;
+  boder: string;
+  color: string;
 }
